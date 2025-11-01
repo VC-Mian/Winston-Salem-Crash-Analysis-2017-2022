@@ -2,7 +2,7 @@
 An interactive data analysis of traffic crashes in Winston-Salem, NC (2016-2023)  using Python, Pandas, and Streamlit. Identifies high-risk locations, temporal  patterns, and severity trends to support evidence-based traffic safety interventions.
 
 ## 🔗 Live Dashboard
-[View Dashboard]([https://YOUR-APP-URL-HERE](https://winston-salem-crash-analysis-2016-2023-2ixuwpq3a4l6d3gh3xgppq.streamlit.app/)
+[View Dashboard]([https://winston-salem-crash-analysis-2016-2023-2ixuwpq3a4l6d3gh3xgppq.streamlit.app/])
 
 ## Key Features
 - Interactive crash location maps
