@@ -11,12 +11,12 @@ An interactive data analysis of traffic crashes in Winston-Salem, NC (2016-2023)
 - Severity-weighted risk assessment
 - Data-driven safety recommendations
 
-## 🛠️ Technologies
+## Technologies
 - **Python**: Pandas, Plotly
 - **Dashboard**: Streamlit
 - **Data Source**: [US Accidents Dataset (Kaggle)]([https://www.kaggle.com/sobhanmoosavi/us-accidents](https://www.kaggle.com/datasets/sobhanmoosavi/us-accidents))
 
-## 🚀 Run Locally
+## Run Locally
 ```bash
 pip install -r requirements.txt
 streamlit run crash_dashboard.py or python -m streamlit run crash_dashboard.py
