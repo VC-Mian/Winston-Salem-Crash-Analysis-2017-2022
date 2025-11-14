@@ -14,6 +14,19 @@ st.set_page_config(
 st.title("Winston-Salem Traffic Crash Analysis (2017-2022)")
 st.markdown("An interactive analysis of traffic crashes in Winston-Salem, NC over 6 complete years")
 
+# Add this NEW section
+st.markdown("""
+### 🎯 Research Questions
+This dashboard answers key questions about traffic safety in Winston-Salem:
+1. **Where** are the most dangerous locations for crashes?
+2. **When** do crashes occur most frequently (time of day, day of week, seasonal patterns)?
+3. **What types of roads** (highways vs. surface streets) have the highest crash rates and severity?
+4. **Which locations** should be prioritized for safety interventions based on severe crash data?
+""")
+
+st.markdown("---")
+```
+
 # Load data
 @st.cache_data
 # Highway classification function
@@ -606,3 +619,4 @@ st.markdown(f"*Analysis based on {total_crashes:,} traffic crashes in Winston-Sa
 if st.checkbox("Show raw data"):
 
     st.dataframe(ws_df.head())
+
