@@ -475,8 +475,6 @@ peak_month = month_names_full[peak_month_num - 1]
 col1, col2 = st.columns(2)
 
 with col1:
-    st.subheader("Key Insights & Recommendations")
-
     st.markdown(f"""
     ### 1️⃣ Highest-Risk Locations
     - **I-40 corridor** — largest cluster of severe crashes  
@@ -528,6 +526,7 @@ st.markdown(f"*Analysis based on {total_crashes:,} traffic crashes in Winston-Sa
 if st.checkbox("Show raw data"):
 
     st.dataframe(ws_df.head())
+
 
 
 
