@@ -39,7 +39,11 @@ streamlit run crash_dashboard.py or python -m streamlit run crash_dashboard.py
 - Morning rush hour (8 AM) shows peak crash frequency
 - 25% of all crashes are classified as severe (Level 3+)
 
-## What I learned:
-- Real data is messy (city names inconsistent, years incomplete)
-- Analysis without recommendations is just counting
-- Context matters - numbers alone don't tell the story
+## Data Analysis Skills I Developed
+
+- Standardized inconsistent text fields (Winston-Salem was entered two different ways)
+- Filtered incomplete years to avoid seasonal bias (2016 & 2023 were incomplete years)
+- Validated anomalies through external research instead of blindly removing them (some outliers were due to emergency events)
+- Built reusable filtering functions for highway classification (separating highways from surface streets for accurate results)
+
+
