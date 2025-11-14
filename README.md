@@ -13,7 +13,7 @@ An interactive data analysis of traffic crashes in Winston-Salem, NC (2016-2023)
 4. **Which locations** should be prioritized for safety interventions?
 
 ## 🔗 Live Dashboard
-[View Dashboard](https://winston-salem-crash-analysis-2017-2022-kj56sklkewunc5cdvm988p.streamlit.app/](https://winston-salem-crash-analysis-2017-2022-gxvjcudnsrgcssfrrccmlg.streamlit.app/)
+[View Dashboard](https://winston-salem-crash-analysis-2017-2022-gxvjcudnsrgcssfrrccmlg.streamlit.app/)
 
 ## Key Features
 - Interactive crash location maps
