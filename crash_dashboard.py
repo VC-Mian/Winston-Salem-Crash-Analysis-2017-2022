@@ -15,7 +15,7 @@ st.title("Winston-Salem Traffic Crash Analysis (2017-2022)")
 st.markdown("An interactive analysis of traffic crashes in Winston-Salem, NC over 6 complete years")
 
 st.markdown("""
-### 🎯 Research Questions
+### Research Questions
 This dashboard answers key questions about traffic safety in Winston-Salem:
 1. **Where** are the most dangerous locations for crashes?
 2. **When** do crashes occur most frequently (time of day, day of week, seasonal patterns)?
@@ -185,7 +185,7 @@ if len(filtered_df) > 0:
         )
     
     fig.update_layout(mapbox_style="open-street-map")
-    st.plotly_chart(fig, use_container_width=True, key="map_chart")
+    st.plotly_chart(fig, width='stretch', key="map_chart")
 else:
     st.warning("No data to display with current filters")
 
@@ -210,7 +210,7 @@ with col1:
         )
         fig_hour.add_vrect(x0=7, x1=9, fillcolor="orange", opacity=0.2, line_width=0)
         fig_hour.add_vrect(x0=16, x1=18, fillcolor="orange", opacity=0.2, line_width=0)
-        st.plotly_chart(fig_hour, use_container_width=True, key="hour_chart")
+        st.plotly_chart(fig_hour, width='stretch', key="hour_chart")
 
 with col2:
     # Crashes by day of week
@@ -225,7 +225,7 @@ with col2:
             color=daily.values,
             color_continuous_scale='Blues'
         )
-        st.plotly_chart(fig_day, use_container_width=True, key="day_chart")
+        st.plotly_chart(fig_day, width='stretch', key="day_chart")
 
 # Crashes by year
 if len(filtered_df) > 0:
@@ -238,7 +238,7 @@ if len(filtered_df) > 0:
         markers=True
     )
     fig_year.update_traces(line_color='steelblue', line_width=3, marker=dict(size=10))
-    st.plotly_chart(fig_year, use_container_width=True, key="year_chart")
+    st.plotly_chart(fig_year, width='stretch', key="year_chart")
 
 st.markdown("---")
 
@@ -273,7 +273,7 @@ with col1:
             ax=20,
             ay=-40
         )
-        st.plotly_chart(fig_month, use_container_width=True, key="month_chart")
+        st.plotly_chart(fig_month, width='stretch', key="month_chart")
 
 with col2:
     # Year-over-year comparison by month
@@ -294,7 +294,7 @@ with col2:
             tickvals=list(range(1, 13)),
             ticktext=month_names
         )
-        st.plotly_chart(fig_month_year, use_container_width=True, key="month_year_chart")
+        st.plotly_chart(fig_month_year, width='stretch', key="month_year_chart")
 
 st.markdown("---")
 
@@ -313,7 +313,7 @@ with col1:
             title='Crash Severity Distribution',
             color_discrete_sequence=px.colors.sequential.Reds
         )
-        st.plotly_chart(fig_severity, use_container_width=True, key="severity_pie")
+        st.plotly_chart(fig_severity, width='stretch', key="severity_pie")
 
 with col2:
     # Severity by year
@@ -328,7 +328,7 @@ with col2:
             barmode='stack',
             color_continuous_scale='Reds'
         )
-        st.plotly_chart(fig_sev_year, use_container_width=True, key="severity_year")
+        st.plotly_chart(fig_sev_year, width='stretch', key="severity_year")
 
 st.markdown("---")
 
@@ -354,7 +354,7 @@ with col1:
             title='Crash Distribution by Road Type',
             color_discrete_sequence=['#d62728', '#1f77b4']
         )
-        st.plotly_chart(fig_road_type, use_container_width=True, key="road_type_pie")
+        st.plotly_chart(fig_road_type, width='stretch', key="road_type_pie")
 
 with col2:
     # Severity comparison
@@ -376,7 +376,7 @@ with col2:
             color_discrete_map={'Highways': '#d62728', 'Surface Streets': '#1f77b4'}
         )
         fig_severity_comp.update_layout(showlegend=False)
-        st.plotly_chart(fig_severity_comp, use_container_width=True, key="severity_comparison")
+        st.plotly_chart(fig_severity_comp, width='stretch', key="severity_comparison")
 
 with col3:
     # Severe crash distribution
@@ -396,7 +396,7 @@ with col3:
             title='Severe Crashes (Level 3+) by Road Type',
             color_discrete_sequence=['#ff6b6b', '#4ecdc4']
         )
-        st.plotly_chart(fig_severe_road, use_container_width=True, key="severe_road_type")
+        st.plotly_chart(fig_severe_road, width='stretch', key="severe_road_type")
 
 # Add insight callout
 if len(filtered_df) > 0:
@@ -429,7 +429,7 @@ with col1:
             color_continuous_scale='Reds'
         )
         fig_streets.update_layout(showlegend=False, height=400)
-        st.plotly_chart(fig_streets, use_container_width=True, key="top_streets")
+        st.plotly_chart(fig_streets, width='stretch', key="top_streets")
 
 with col2:
     st.subheader("Top 10 Streets by Severe Crashes")
@@ -446,7 +446,7 @@ with col2:
                 color_continuous_scale='Oranges'
             )
             fig_severe_streets.update_layout(showlegend=False, height=400)
-            st.plotly_chart(fig_severe_streets, use_container_width=True, key="top_severe_streets")
+            st.plotly_chart(fig_severe_streets, width='stretch', key="top_severe_streets")
         else:
             st.info("No severe crashes in filtered data")
 
@@ -475,148 +475,62 @@ peak_month = month_names_full[peak_month_num - 1]
 col1, col2 = st.columns(2)
 
 with col1:
-    st.subheader("Major Insights")
+    st.subheader("Key Insights & Recommendations")
+
     st.markdown(f"""
-        **Dataset Overview:**
-        - **{total_crashes:,} total crashes** analyzed (2017-2022)
-        - **{len(severe_crashes_all):,} severe crashes** (Level 3+) = **{severe_pct_all:.1f}%** of total
+    ### 1️⃣ Highest-Risk Locations
+    - **I-40 corridor** — largest cluster of severe crashes  
+    - **Business 40 / John Gold Memorial Expy**  
+    - **Cloverleaf interchanges** (high-speed merging)  
+    - Surface-street hotspots: **S Stratford Rd**, **University Pkwy**, **Peters Creek Pkwy**
 
-        ---
+    These areas combine high speeds and complex movements, making them top priorities for safety action.
 
-        **1. Highway Concentration**
+    ---
 
-        Despite highways representing a small fraction of total road miles, they account 
-        for **{highway_pct_all:.1f}%** of all crashes. More critically, severe crashes are 
-        disproportionately concentrated on highways (**{severe_highway_pct_all:.1f}%** of 
-        Level 3+ crashes).
+    ### 2️⃣ Peak Times for Crashes
+    - Morning peak: **{peak_hour}:00 AM**  
+    - Evening peak: **4–6 PM**  
+    - **Weekdays** show higher crash volumes  
+    - Seasonal high in **{peak_month}**
 
-        *Key corridors: I-40 and Business 40 (John Gold Memorial Expressway)*
-
-        ---
-
-        **2. Rush Hour Pattern**
-
-        **{peak_hour}:00 AM** (morning rush hour) shows the highest crash frequency, with 
-        secondary peaks during evening commute (4-6 PM). Weekday crashes significantly 
-        exceed weekend crashes, correlating with commuter traffic patterns.
-        """)
+    **Recommendation:** Target enforcement and public messaging during these high-risk times.
+    """)
 
 with col2:
     st.markdown(f"""
-        
-        **3. Seasonal Variation**
+    ### 3️⃣ Highway Crash Risk
+    Highways represent a small portion of the road network but account for:
+    - **{highway_pct_all:.1f}%** of all crashes  
+    - **{severe_highway_pct_all:.1f}%** of severe crashes  
 
-        **{peak_month}** consistently shows the highest crash rates. This seasonal spike 
-        may be linked to holiday travel and weather transitions. 
+    **Recommendation:** Focus on highway safety improvements — speed enforcement, lighting, signage, and ramp design.
 
-        ---
+    ---
 
-        **4. I-40 as Primary Risk Factor**
+    ### 4️⃣ Priority Safety Actions
+    - Improve safety along **I-40**, **Business 40**, and major interchanges  
+    - Evaluate cloverleaf ramps for merge/visibility upgrades  
+    - Increase monitoring during **rush hours**  
+    - Launch seasonal safety efforts during **{peak_month}**  
+    - Optimize signals/lane design on surface-street hotspots
 
-        The **I-40 corridor (East and West combined) accounts for 250+ severe crashes**, 
-        making it the single most dangerous location in Winston-Salem. Business 40 
-        (John Gold Memorial Expressway) follows with 110+ severe crashes. Together, 
-        these two highway systems represent **over 40% of all severe crashes** in the city.
+    ---
 
-        While certain surface streets like S Stratford Rd show concerning severe crash 
-        rates relative to their volume, the absolute priority must be addressing the 
-        I-40 corridor where the highest number of serious injuries occur.
+    ### 5️⃣ Summary
+    Interstates and interchanges drive most severe crashes.  
+    Targeting **these locations** and **rush-hour timeframes** will yield the biggest safety improvements.
+    """)
 
-        ---
-
-        **5. Cloverleaf Interchanges**
-
-        Highway interchanges, particularly cloverleaf-style designs, emerge as critical 
-        crash hotspots due to merging traffic, speed differentials, and limited visibility.
-                
-        
-        """)
-st.markdown("--------------------------------")
-# Recommendations
-col3, col4 = st.columns(2)
-
-with col3:
-    st.subheader("Recommendations")
-    st.markdown(f"""
-        **High-Priority Interventions:**
-
-        **I-40 Corridor (Critical Priority)**
-        - **I-40 East and West** account for 250+ severe crashes combined - the single 
-            highest-risk area in Winston-Salem
-        - Immediate focus areas:
-            - Enhanced median barriers to prevent crossover collisions
-            - Improved merge zone signage and lighting at interchanges
-            - Variable speed limits during peak traffic or adverse weather
-            - Increased enforcement of distracted driving and speeding
-        - Consider comprehensive safety audit of entire I-40 corridor through Winston-Salem
-
-        ---
-
-        **Business 40 (John Gold Memorial Expressway)**
-        - **Second-highest crash concentration** with 110+ severe crashes on north and 
-            south sections combined
-        - Recommended interventions:
-            - Cloverleaf interchange redesigns (known high-risk design)
-            - Enhanced exit warning systems
-            - Improved lighting at merge zones
-            - Clear zone improvements to reduce severity of run-off-road crashes
-
-        ---
-
-          **High-Risk Surface Streets**
-        - **S Stratford Rd** shows disproportionately high severe crash rate despite lower volume
-            - Railroad crossing safety improvements
-            - Commercial vehicle route assessment
-            - Enhanced crosswalk/pedestrian safety measures
-        - Other surface streets require individual site assessments based on local conditions
-
-        """)
-
-with col4:
-    st.markdown(f"""
-        ---     
-
-        **Resource Allocation Priority**
-
-        Based on crash data, safety investments should prioritize:
-        1. **I-40 corridor** (250+ severe crashes) - Highest impact potential
-        2. **Business 40 interchanges** (110+ severe crashes) - Major risk areas  
-        3. **US-421 intersections** (50+ severe crashes) - Significant risk
-        4. **High-rate surface streets** (S Stratford Rd and similar) - Targeted interventions
-
-        Given that **{severe_highway_pct_all:.1f}%** of severe crashes occur on highways 
-        representing <5% of road infrastructure, highway safety investments offer the 
-        highest return in lives saved and injuries prevented.
-                      
-        ---
-                    
-        **Time-Based Strategies**
-        - Deploy additional enforcement during morning rush hour (7-9 AM) when crash risk peaks
-        - Consider dynamic messaging boards on I-40 and Business 40 warning of high-risk periods
-        - Coordinate with employers for flexible work hours to reduce peak congestion
-
-        ---
-
-        **Seasonal Awareness**
-        - Increase enforcement and safety campaigns during {peak_month}
-        - Back-to-school traffic management (late August/September)
-        - Enhanced winter weather response on highway corridors
-
-        ---
-
-        **US-421 North**
-            - **50+ severe crashes** indicate significant risk
-            - Target areas: Intersections and merge points
-            - Consider: Signal timing optimization, turn lane improvements, sight distance analysis
-
-        """)
-
-st.markdown(f"*Analysis based on {total_crashes:,} traffic crashes in Winston-Salem, Forsyth County, NC (2017-2022)*")
+st.markdown(f"*Analysis based on {total_crashes:,} traffic crashes in Winston-Salem, Forsyth County, NC (2017–2022).*")
 
 # Display first few rows
 if st.checkbox("Show raw data"):
 
     st.dataframe(ws_df.head())
+
+
+
 
 
 
