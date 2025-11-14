@@ -14,7 +14,6 @@ st.set_page_config(
 st.title("Winston-Salem Traffic Crash Analysis (2017-2022)")
 st.markdown("An interactive analysis of traffic crashes in Winston-Salem, NC over 6 complete years")
 
-# Add this NEW section
 st.markdown("""
 ### 🎯 Research Questions
 This dashboard answers key questions about traffic safety in Winston-Salem:
@@ -25,7 +24,6 @@ This dashboard answers key questions about traffic safety in Winston-Salem:
 """)
 
 st.markdown("---")
-```
 
 # Load data
 @st.cache_data
@@ -619,4 +617,5 @@ st.markdown(f"*Analysis based on {total_crashes:,} traffic crashes in Winston-Sa
 if st.checkbox("Show raw data"):
 
     st.dataframe(ws_df.head())
+
 
