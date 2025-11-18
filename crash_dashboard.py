@@ -487,7 +487,7 @@ with col1:
     ---
 
     ### 2️⃣ Peak Times for Crashes
-    - Morning peak: **{peak_hour}:00 AM**  
+    - Morning peak: **8:00 AM**  
     - Evening peak: **4–6 PM**  
     - **Weekdays** show higher crash volumes  
     - Seasonal high in **{peak_month}**
@@ -526,6 +526,7 @@ st.markdown(f"*Analysis based on {total_crashes:,} traffic crashes in Winston-Sa
 if st.checkbox("Show raw data"):
 
     st.dataframe(ws_df.head())
+
 
 
 
