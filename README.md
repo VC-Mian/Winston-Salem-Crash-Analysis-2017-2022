@@ -4,7 +4,7 @@ An interactive data analysis of traffic crashes in Winston-Salem, NC (2016-2023)
 **Workflow:**
 1. **Explore** data in `DataAnalysis.ipynb` (research questions, cleaning, patterns)
 2. **Build** dashboard in `crash_dashboard.py` (implement insights, add interactivity)
-3. **Deploy** to Streamlit Cloud (share with stakeholders)
+3. **Deploy** to Streamlit Cloud
    
 ## Research Questions
 1. **Where** are the most dangerous locations for crashes in Winston-Salem?
